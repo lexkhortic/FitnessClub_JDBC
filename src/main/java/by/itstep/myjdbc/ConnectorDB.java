@@ -135,11 +135,58 @@ public class ConnectorDB {
                 System.out.println("Такого тренера не существует!");
             }
 
-
-
             trainer.close();
             preparedStatement.close();
             connection.close();
+
+        } catch (IOException | SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static boolean checkTrainer(String nameTrainer) {
+        Connection connection = createConnection(URL, USER, PASSWORD);
+        PreparedStatement preparedStatement;
+        ResultSet trainer;
+        String request = "SELECT fio, age, name_section, workexperience, education\n" +
+                "FROM trainer\n" +
+                "         INNER JOIN section ON trainer.id_section = section.id_section\n" +
+                "WHERE fio = ?;";
+
+        try {
+            preparedStatement = connection.prepareStatement(request);
+            preparedStatement.setString(1, nameTrainer);
+            trainer = preparedStatement.executeQuery();
+            return trainer.next();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static void deleteInfoTrainer() {
+        Connection connection = createConnection(URL, USER, PASSWORD);
+        PreparedStatement preparedStatement;
+        String request = "UPDATE trainer\n" +
+                "SET\n" +
+                "fio=null, age=null, id_section=null, workexperience=null, education=null\n" +
+                "WHERE fio = ?;";
+
+        try {
+            System.out.println("Удалить информацию о тренере по ФИО:");
+            System.out.print("Введите ФИО тренера: ");
+            String fioInput = reader.readLine();
+            if (checkTrainer(fioInput)) {
+                preparedStatement = connection.prepareStatement(request);
+                preparedStatement.setString(1, fioInput);
+                preparedStatement.executeUpdate();
+
+                preparedStatement.close();
+                connection.close();
+                System.out.println("Данные по тренеру " + fioInput + " удалены!");
+            } else {
+                System.out.println("Такого тренера не существует!");
+            }
 
         } catch (IOException | SQLException e) {
             throw new RuntimeException(e);

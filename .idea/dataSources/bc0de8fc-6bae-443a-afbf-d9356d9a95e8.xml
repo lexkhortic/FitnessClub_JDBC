@@ -1478,7 +1478,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <Primary>1</Primary>
     </key>
     <column id="396" parent="317" name="id_gym">
-      <AutoIncrement>1</AutoIncrement>
+      <AutoIncrement>5</AutoIncrement>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -1503,7 +1503,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <UnderlyingIndexName>type_gym</UnderlyingIndexName>
     </key>
     <column id="401" parent="318" name="id_section">
-      <AutoIncrement>1</AutoIncrement>
+      <AutoIncrement>7</AutoIncrement>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -1547,34 +1547,29 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <UnderlyingIndexName>name_section</UnderlyingIndexName>
     </key>
     <column id="410" parent="319" name="id_trainer">
-      <AutoIncrement>1</AutoIncrement>
+      <AutoIncrement>9</AutoIncrement>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
     <column id="411" parent="319" name="fio">
       <DataType>char(50)|0s</DataType>
-      <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
     <column id="412" parent="319" name="age">
       <DataType>int|0s</DataType>
-      <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
     <column id="413" parent="319" name="id_section">
       <DataType>int|0s</DataType>
-      <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
     <column id="414" parent="319" name="workExperience">
       <DataType>int|0s</DataType>
-      <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
     <column id="415" parent="319" name="education">
       <DataType>char(100)|0s</DataType>
-      <NotNull>1</NotNull>
       <Position>6</Position>
     </column>
     <foreign-key id="416" parent="319" name="FK_id_section">
